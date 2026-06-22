@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RTech Support – IT & Email Solutions</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231A56DB'/%3E%3Cstop offset='100%25' stop-color='%2306B6D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='38' height='38' rx='10' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-weight='800' font-size='20' fill='%23ffffff'%3ER%3C/text%3E%3C/svg%3E" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Arial:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0A1628;
+    --blue: #1A56DB;
+    --blue-light: #3B82F6;
+    --cyan: #06B6D4;
+    --white: #FFFFFF;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --gray-800: #1E293B;
+    --accent: #06B6D4;
+    --gradient: linear-gradient(135deg, #0A1628 0%, #1A3A6E 100%);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    font-family: 'Arial', sans-serif; font-size: 1.5rem; font-weight: 800;
+    color: var(--white); text-decoration: none; letter-spacing: -0.5px;
+    display: flex; align-items: center; gap: 0.65rem;
+  }
+  .logo span { color: var(--cyan); }
+  .logo-badge {
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, #1A56DB 0%, #06B6D4 100%);
+    font-family: 'Arial', sans-serif; font-weight: 800; font-size: 1.25rem;
+    color: #fff; line-height: 1;
+  }
+  .footer-brand .logo-badge { width: 32px; height: 32px; font-size: 1.05rem; }
+  .footer-brand .logo { margin-bottom: 1rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-cta {
+    background: var(--blue); color: var(--white); padding: 0.5rem 1.25rem;
+    border-radius: 6px; font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue-light); color: #fff; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+
+  /* DROPDOWN SUBMENU */
+  .nav-links li { position: relative; }
+  .nav-links li.has-dropdown > a {
+    display: flex; align-items: center; gap: 5px;
+  }
+  .nav-links li.has-dropdown > a::after {
+    content: '';
+    display: inline-block;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid rgba(255,255,255,0.7);
+    transition: transform 0.2s;
+    margin-top: 1px;
+  }
+  .nav-links li.has-dropdown > a { color: rgba(255,255,255,0.75); }
+  .nav-links li.has-dropdown:hover > a { color: var(--cyan); }
+  .nav-links li.has-dropdown:hover > a::after { border-top-color: var(--cyan); transform: rotate(180deg); }
+  .nav-links li.has-dropdown.open > a { color: var(--cyan); }
+  .nav-links li.has-dropdown.open > a::after { border-top-color: var(--cyan); transform: rotate(180deg); }
+
+  .dropdown {
+    display: none;
+    position: absolute; top: calc(100% + 0px); left: 0;
+    min-width: 260px;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    overflow: hidden;
+    z-index: 200;
+    border: 1px solid var(--gray-200);
+    animation: dropIn 0.15s ease;
+  }
+  @keyframes dropIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Show on hover */
+  .nav-links li.has-dropdown:hover .dropdown,
+  .nav-links li.has-dropdown.open .dropdown { display: block; }
+
+  .dropdown a {
+    display: block;
+    padding: 0.9rem 1.4rem;
+    color: #374151 !important;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #F3F4F6;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    background: #fff;
+  }
+  .dropdown a:last-child { border-bottom: none; }
+  .dropdown a:hover {
+    background: #2D3748 !important;
+    color: #fff !important;
+  }
+
+  /* removed dropdown-header - all items use hover highlight */
+  .dropdown a {
+    display: block;
+    padding: 0.82rem 1.25rem;
+    color: #374151 !important;
+    font-size: 0.88rem; font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #F3F4F6;
+    transition: background 0.15s, color 0.15s, padding-left 0.15s;
+    white-space: nowrap;
+  }
+  .dropdown a:last-child { border-bottom: none; }
+  .dropdown a:hover {
+    background: #EFF6FF;
+    color: var(--blue) !important;
+    padding-left: 1.6rem;
+  }
+
+  /* PORTFOLIO */
+  .portfolio-tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
+  .ptab {
+    background: var(--gray-100); border: 1.5px solid var(--gray-200); color: var(--gray-600);
+    padding: 0.5rem 1.1rem; border-radius: 50px; font-size: 0.83rem; font-weight: 600;
+    cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s;
+  }
+  .ptab:hover { border-color: var(--blue); color: var(--blue); }
+  .ptab.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .port-card {
+    background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px;
+    overflow: hidden; transition: all 0.25s;
+  }
+  .port-card:hover { box-shadow: 0 16px 48px rgba(26,86,219,0.12); transform: translateY(-5px); }
+  .port-card.hidden { display: none; }
+  .port-img {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .port-icon { font-size: 3.2rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)); }
+  .port-body { padding: 1.5rem; }
+  .port-tag {
+    display: inline-block; background: rgba(26,86,219,0.08); color: var(--blue);
+    border: 1px solid rgba(26,86,219,0.2); border-radius: 20px;
+    font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.65rem;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem;
+  }
+  .port-body h3 { font-size: 0.97rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.4; }
+  .port-body p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 1rem; }
+  .port-meta { display: flex; gap: 1rem; }
+  .port-meta span { font-size: 0.78rem; color: var(--gray-400); font-weight: 500; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--gradient);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,86,219,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(6,182,212,0.15); border: 1px solid rgba(6,182,212,0.3);
+    color: var(--cyan); font-size: 0.8rem; font-weight: 600;
+    padding: 0.35rem 0.85rem; border-radius: 20px; margin-bottom: 1.5rem;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 800; color: var(--white); line-height: 1.15;
+    margin-bottom: 1.25rem; letter-spacing: -1px;
+  }
+  .hero h1 em { font-style: normal; color: var(--cyan); }
+  .hero p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 480px; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--blue); color: #fff; padding: 0.85rem 1.75rem;
+    border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    transition: background 0.2s, transform 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.3); color: #fff; padding: 0.85rem 1.75rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);
+    max-width: 360px; width: 100%;
+  }
+  .hero-card-title { color: var(--cyan); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem; }
+  .service-pill {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 0.75rem 1rem; margin-bottom: 0.75rem;
+    color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .service-pill:hover { background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.3); }
+  .service-pill .icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .icon-m365 { background: rgba(26,86,219,0.3); }
+  .icon-gw { background: rgba(234,67,53,0.25); }
+  .icon-dns { background: rgba(6,182,212,0.25); }
+  .icon-sec { background: rgba(16,185,129,0.25); }
+  .stats-row { display: flex; gap: 1.5rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stat { text-align: center; }
+  .stat-num { color: var(--cyan); font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; }
+  .stat-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 700; color: var(--blue); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--gray-600); font-size: 1.05rem; max-width: 600px; }
+
+  /* WHY US */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .why-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 2rem; transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .why-card:hover { box-shadow: 0 12px 40px rgba(26,86,219,0.1); transform: translateY(-4px); }
+  .why-icon {
+    width: 52px; height: 52px; border-radius: 14px; margin-bottom: 1.25rem;
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+  .why-card p { font-size: 0.9rem; color: var(--gray-600); }
+
+  /* SERVICES */
+  .services-bg { background: var(--gray-50); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 2rem; transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { box-shadow: 0 16px 48px rgba(26,86,219,0.12); transform: translateY(-4px); }
+  .service-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+  .service-card p { font-size: 0.88rem; color: var(--gray-600); margin-bottom: 1rem; }
+  .service-link { color: var(--blue); font-size: 0.85rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+  .service-link:hover { color: var(--cyan); }
+  .service-link::after { content: '→'; }
+
+  /* ABOUT */
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-img-wrap { position: relative; }
+  .about-img-box {
+    background: var(--gradient); border-radius: 24px; padding: 3rem;
+    display: flex; flex-direction: column; gap: 1.5rem; align-items: center; justify-content: center; min-height: 380px;
+  }
+  .avatar-circle {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: rgba(6,182,212,0.2); border: 3px solid var(--cyan);
+    display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+  }
+  .about-name { color: #fff; font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
+  .about-role { color: var(--cyan); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .platform-badges { display: flex; gap: 0.75rem; }
+  .badge {
+    background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+    padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 600;
+  }
+  .about-content h2 { margin-bottom: 1rem; }
+  .about-content p { color: var(--gray-600); margin-bottom: 1rem; font-size: 0.95rem; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0; }
+  .skill-tag {
+    background: rgba(26,86,219,0.08); color: var(--blue);
+    border: 1px solid rgba(26,86,219,0.2); border-radius: 6px;
+    padding: 0.3rem 0.75rem; font-size: 0.8rem; font-weight: 600;
+  }
+
+  /* PROCESS */
+  .process-bg { background: var(--navy); }
+  .process-bg .section-label { color: var(--cyan); }
+  .process-bg .section-title { color: var(--white); }
+  .process-bg .section-sub { color: rgba(255,255,255,0.6); }
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 3.5rem; position: relative; }
+  .process-step { text-align: center; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(6,182,212,0.15); border: 2px solid var(--cyan);
+    color: var(--cyan); font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+  }
+  .process-step h3 { color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-step p { color: rgba(255,255,255,0.55); font-size: 0.875rem; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .testi-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 2rem; transition: box-shadow 0.25s;
+  }
+  .testi-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { color: var(--gray-600); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--gradient); display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 0.95rem; flex-shrink: 0;
+  }
+  .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+  .testi-loc { font-size: 0.78rem; color: var(--gray-400); }
+
+  /* CTA BAND */
+  .cta-band {
+    background: linear-gradient(135deg, #1A56DB 0%, #06B6D4 100%);
+    padding: 80px 5%; text-align: center;
+  }
+  .cta-band h2 {
+    font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800; color: #fff; margin-bottom: 1rem; letter-spacing: -0.5px;
+  }
+  .cta-band p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 2rem; }
+  .cta-band .btn-white {
+    background: #fff; color: var(--blue); padding: 0.9rem 2rem;
+    border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem;
+    transition: transform 0.2s; display: inline-block;
+  }
+  .cta-band .btn-white:hover { transform: translateY(-2px); }
+
+  /* CONTACT CHANNELS */
+  .contact-channels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 0;
+  }
+  .channel-card {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2rem 1.25rem 1.75rem;
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 16px; text-decoration: none;
+    transition: all 0.25s; cursor: pointer;
+  }
+  .channel-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 12px 36px rgba(26,86,219,0.12);
+    transform: translateY(-4px);
+  }
+  .channel-icon-wrap {
+    width: 72px; height: 72px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .channel-label {
+    font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 800;
+    color: var(--blue); margin-bottom: 0.3rem;
+  }
+  .channel-val {
+    font-size: 0.8rem; color: var(--gray-400); font-weight: 500;
+  }
+  .contact-form-centered {
+    background: var(--gray-50); border-radius: 20px; padding: 2.5rem; text-align: left;
+  }
+  @media (max-width: 700px) {
+    .contact-channels { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 420px) {
+    .contact-channels { grid-template-columns: 1fr; }
+  }
+
+  /* CONTACT (old - keep for reference) */
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info h2 { margin-bottom: 1rem; }
+  .contact-info p { color: var(--gray-600); margin-bottom: 2rem; }
+  .contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+  .contact-icon {
+    width: 44px; height: 44px; background: rgba(26,86,219,0.08);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-item-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-400); font-weight: 600; }
+  .contact-item-val { color: var(--navy); font-weight: 600; font-size: 0.95rem; }
+  .contact-form { background: var(--gray-50); border-radius: 20px; padding: 2.5rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.4rem; }
+  input, textarea, select {
+    width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--gray-200);
+    border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+    color: var(--gray-800); background: #fff; transition: border-color 0.2s;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--blue); }
+  textarea { resize: vertical; min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit {
+    width: 100%; background: var(--blue); color: #fff; padding: 0.9rem;
+    border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--blue-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); padding: 60px 5% 30px;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo { display: inline-block; margin-bottom: 1rem; font-size: 1.3rem; }
+  .footer-brand p { font-size: 0.875rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 { color: #fff; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--cyan); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; }
+  .footer-bottom p { font-size: 0.82rem; }
+  .social-links { display: flex; gap: 0.75rem; }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: background 0.2s, color 0.2s;
+  }
+  .social-link:hover { background: var(--cyan); color: var(--navy); }
+
+  /* FIND ME */
+  .find-me { margin-bottom: 2.5rem; }
+  .find-me h4 {
+    color: var(--blue-light); font-size: 1.15rem; font-weight: 800;
+    margin-bottom: 1.25rem; letter-spacing: -0.3px;
+  }
+  .find-me-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .findme-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #fff; border-radius: 8px; padding: 0.55rem 1.1rem;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    line-height: 1;
+  }
+  .findme-badge:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
+  .findme-badge img, .findme-badge svg { height: 22px; display: block; }
+  .findme-social { display: flex; gap: 0.6rem; }
+  .findme-social a {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--blue-light); display: flex; align-items: center; justify-content: center;
+    color: #fff; text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .findme-social a:hover { background: var(--blue); transform: translateY(-3px); }
+  .findme-social svg { width: 20px; height: 20px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+
+    .hamburger { display: flex; z-index: 110; }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      max-height: calc(100vh - 68px);
+      overflow-y: auto;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.5rem 5% 1.5rem;
+      transform: translateY(-8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+    .nav-links.open {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 0.85rem 0; }
+    .nav-links li.has-dropdown > a::after { margin-left: auto; }
+    .nav-links .nav-cta { display: inline-block; margin-top: 0.5rem; text-align: center; }
+
+    /* Dropdown becomes an inline accordion on mobile instead of a floating panel */
+    .dropdown {
+      position: static;
+      display: none;
+      min-width: 0;
+      width: 100%;
+      border-radius: 8px;
+      margin: 0.25rem 0 0.5rem;
+      box-shadow: none;
+      animation: none;
+    }
+    .nav-links li.has-dropdown.open > .dropdown { display: block; }
+    .nav-links li.has-dropdown:hover .dropdown { display: none; }
+    .nav-links li.has-dropdown.open:hover > .dropdown { display: block; }
+
+    /* Animated hamburger -> X */
+    .hamburger { gap: 0; justify-content: center; flex-direction: column; }
+    .hamburger span {
+      transition: transform 0.25s ease, opacity 0.2s ease;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+  @media (max-width: 600px) {
+    section { padding: 60px 5%; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <span class="logo-badge">R</span>
+    RTech<span>Support</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li class="has-dropdown">
+      <a href="#services">Services</a>
+      <div class="dropdown">
+        <a href="#services">Microsoft 365 Email Setup</a>
+        <a href="#services">Google Workspace Email Setup</a>
+        <a href="#services">Domain &amp; DNS Management</a>
+        <a href="#services">Email Security</a>
+        <a href="#services">Email Migration</a>
+        <a href="#services">Email Deliverability</a>
+      </div>
+    </li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="nav-cta" href="#contact">Get Started</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">IT Support & Managed Services</div>
+      <h1>Reliable <em>IT Solutions</em> for Growing Businesses</h1>
+      <p>RTech Support specializes in Email Systems, Cloud Setup, DNS Management, and IT Infrastructure — keeping your business connected and secure.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-title">Our Core Services</div>
+        <div class="service-pill"><div class="icon icon-m365">📧</div>Microsoft 365 Setup</div>
+        <div class="service-pill"><div class="icon icon-gw">🌐</div>Google Workspace</div>
+        <div class="service-pill"><div class="icon icon-dns">🔧</div>DNS & Domain Management</div>
+        <div class="service-pill"><div class="icon icon-sec">🔒</div>Email Security & DMARC</div>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Years Exp.</div></div>
+          <div class="stat"><div class="stat-num">120+</div><div class="stat-label">Clients</div></div>
+          <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">Why RTech Support</div>
+    <h2 class="section-title">IT Support You Can Actually Rely On</h2>
+    <p class="section-sub">We combine technical expertise with fast response times to keep your business running without interruption.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(26,86,219,0.1);">🏆</div>
+        <h3>8+ Years of Experience</h3>
+        <p>Hundreds of businesses trust us for email infrastructure, cloud systems, and IT problem solving — delivered with precision.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(6,182,212,0.1);">🌍</div>
+        <h3>Global Client Base</h3>
+        <p>We support clients across Bangladesh, USA, UK, Canada and Australia — with top-rated feedback on every platform.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(16,185,129,0.1);">🔒</div>
+        <h3>Security-First Approach</h3>
+        <p>SPF, DKIM, DMARC, SSL and end-to-end email security — your communication is hardened against threats from day one.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(245,158,11,0.1);">⚡</div>
+        <h3>Fast Turnaround</h3>
+        <p>Most issues resolved within hours, not days. We value your time and work to minimize downtime at every step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our IT & Email Services</h2>
+    <p class="section-sub">End-to-end solutions across email setup, cloud platforms, security, and IT management for businesses of all sizes.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-icon">📧</div>
+        <h3>Microsoft 365 Email Setup</h3>
+        <p>Full M365 tenant setup, user provisioning, Exchange configuration, and DNS record integration — done right the first time.</p>
+        <a href="#contact" class="service-link">Learn more</a>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🌐</div>
+        <h3>Google Workspace Setup</h3>
+        <p>Gmail business setup, admin console configuration, shared drives, calendar sync, and all verification records handled for you.</p>
+        <a href="#contact" class="service-link">Learn more</a>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔧</div>
+        <h3>Domain & DNS Management</h3>
+        <p>MX, SPF, DKIM, DMARC, CNAME — we manage your DNS records across all major registrars to ensure smooth email flow.</p>
+        <a href="#contact" class="service-link">Learn more</a>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔒</div>
+        <h3>Email Security</h3>
+        <p>Anti-phishing, spam filtering, SPF/DKIM hardening, and DMARC policy setup to protect your business communications.</p>
+        <a href="#contact" class="service-link">Learn more</a>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔄</div>
+        <h3>Email Migration</h3>
+        <p>Zero data-loss migration from cPanel, Zoho, Outlook, or any IMAP source to Microsoft 365 or Google Workspace.</p>
+        <a href="#contact" class="service-link">Learn more</a>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">📊</div>
+        <h3>Email Deliverability</h3>
+        <p>Fix inbox placement issues, audit your sending reputation, and configure all records for maximum deliverability rates.</p>
+        <a href="#contact" class="service-link">Learn more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="background:var(--gray-50);">
+  <div class="container">
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">Project Portfolio</h2>
+    <p class="section-sub">Real solutions delivered to real businesses — a sample of what we've accomplished for clients worldwide.</p>
+
+    <div class="portfolio-tabs">
+      <button class="ptab active" onclick="filterPortfolio('all', this)">All Projects</button>
+      <button class="ptab" onclick="filterPortfolio('m365', this)">Microsoft 365</button>
+      <button class="ptab" onclick="filterPortfolio('gws', this)">Google Workspace</button>
+      <button class="ptab" onclick="filterPortfolio('dns', this)">DNS &amp; Domain</button>
+      <button class="ptab" onclick="filterPortfolio('migration', this)">Email Migration</button>
+      <button class="ptab" onclick="filterPortfolio('security', this)">Security</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+
+      <div class="port-card" data-cat="m365">
+        <div class="port-img" style="background:linear-gradient(135deg,#1A56DB,#3B82F6);">
+          <div class="port-icon">📧</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Microsoft 365</span>
+          <h3>M365 Tenant Setup — E-Commerce Company</h3>
+          <p>Full Microsoft 365 deployment for a 45-user e-commerce team: Exchange Online, SharePoint, Teams, and all DNS records configured on GoDaddy.</p>
+          <div class="port-meta"><span>✅ 45 Users</span><span>🇺🇸 USA Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="gws">
+        <div class="port-img" style="background:linear-gradient(135deg,#EA4335,#FBBC05);">
+          <div class="port-icon">🌐</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Google Workspace</span>
+          <h3>Google Workspace Setup — Law Firm</h3>
+          <p>Google Workspace Business Standard setup for a 12-user law firm including Gmail, Drive, Meet, MX/SPF/DKIM records and user onboarding.</p>
+          <div class="port-meta"><span>✅ 12 Users</span><span>🇬🇧 UK Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="migration">
+        <div class="port-img" style="background:linear-gradient(135deg,#7C3AED,#A78BFA);">
+          <div class="port-icon">🔄</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Email Migration</span>
+          <h3>cPanel → Microsoft 365 Migration</h3>
+          <p>Migrated 200+ mailboxes from cPanel/IMAP to Microsoft 365 for a manufacturing company with zero data loss and minimal downtime.</p>
+          <div class="port-meta"><span>✅ 200+ Mailboxes</span><span>🇧🇩 BD Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="security">
+        <div class="port-img" style="background:linear-gradient(135deg,#059669,#34D399);">
+          <div class="port-icon">🔒</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Email Security</span>
+          <h3>DMARC &amp; SPF Hardening — SaaS Startup</h3>
+          <p>Fixed email spoofing vulnerabilities for a SaaS company by implementing strict DMARC policy, DKIM signing, and SPF flattening across 3 domains.</p>
+          <div class="port-meta"><span>✅ 3 Domains</span><span>🇨🇦 Canada Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="dns">
+        <div class="port-img" style="background:linear-gradient(135deg,#0891B2,#06B6D4);">
+          <div class="port-icon">🔧</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">DNS &amp; Domain</span>
+          <h3>Multi-Domain DNS Cleanup — Digital Agency</h3>
+          <p>Audited and restructured DNS records across 8 domains for a digital agency, resolving propagation issues and improving email reliability to 100%.</p>
+          <div class="port-meta"><span>✅ 8 Domains</span><span>🇦🇺 Australia Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="gws">
+        <div class="port-img" style="background:linear-gradient(135deg,#D97706,#F59E0B);">
+          <div class="port-icon">📊</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Google Workspace</span>
+          <h3>Zoho → Google Workspace Migration</h3>
+          <p>Seamlessly migrated a 30-user team from Zoho Mail to Google Workspace, preserving all emails, contacts, and calendar data without interruption.</p>
+          <div class="port-meta"><span>✅ 30 Users</span><span>🇺🇸 USA Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="m365">
+        <div class="port-img" style="background:linear-gradient(135deg,#1D4ED8,#60A5FA);">
+          <div class="port-icon">☁️</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Microsoft 365</span>
+          <h3>OneDrive &amp; SharePoint Rollout — NGO</h3>
+          <p>Deployed OneDrive and SharePoint for document collaboration across a 60-user NGO, with custom folder structure, permissions, and staff training.</p>
+          <div class="port-meta"><span>✅ 60 Users</span><span>🇬🇧 UK Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="migration">
+        <div class="port-img" style="background:linear-gradient(135deg,#BE185D,#F472B6);">
+          <div class="port-icon">📬</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Email Migration</span>
+          <h3>Gmail → Microsoft 365 Cross-Migration</h3>
+          <p>Cross-platform migration from Google Workspace to Microsoft 365 for a 25-user retail firm, with full email history, contacts and calendar preserved.</p>
+          <div class="port-meta"><span>✅ 25 Users</span><span>🇧🇩 BD Client</span></div>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="security">
+        <div class="port-img" style="background:linear-gradient(135deg,#374151,#6B7280);">
+          <div class="port-icon">🛡️</div>
+        </div>
+        <div class="port-body">
+          <span class="port-tag">Email Security</span>
+          <h3>Cold Email Infrastructure Setup</h3>
+          <p>Built a compliant cold email sending infrastructure with dedicated IPs, domain warm-up, DKIM/SPF/DMARC, and deliverability monitoring for a sales team.</p>
+          <div class="port-meta"><span>✅ 5 Sending Domains</span><span>🇨🇦 Canada Client</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img-wrap">
+        <div class="about-img-box">
+          <div class="avatar-circle">👨‍💻</div>
+          <div class="about-name">RTech Support Team</div>
+          <div class="about-role">IT & Email Specialists</div>
+          <div class="platform-badges">
+            <span class="badge">RTechsupport.net</span>
+            <span class="badge">BD</span>
+          </div>
+          <div style="display:flex;gap:2rem;margin-top:0.5rem;text-align:center;">
+            <div><div style="color:var(--cyan);font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;">120+</div><div style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;">Projects Done</div></div>
+            <div><div style="color:var(--cyan);font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;">98%</div><div style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;">Satisfaction</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Helping Businesses Build Reliable IT Systems</h2>
+        <p>At RTech Support, we are a dedicated IT support team based in Bangladesh, serving businesses worldwide. We specialize in email infrastructure, cloud platforms, and managed IT services — delivering solutions that actually work.</p>
+        <p>Whether you're a startup needing your first business email or an enterprise migrating to the cloud, we bring the experience, tools, and care to get it right.</p>
+        <div class="skills-list">
+          <span class="skill-tag">Microsoft 365</span>
+          <span class="skill-tag">Google Workspace</span>
+          <span class="skill-tag">cPanel/WHM</span>
+          <span class="skill-tag">Zoho Mail</span>
+          <span class="skill-tag">SPF/DKIM/DMARC</span>
+          <span class="skill-tag">DNS Management</span>
+          <span class="skill-tag">Email Migration</span>
+          <span class="skill-tag">IT Consulting</span>
+        </div>
+        <a href="#contact" class="btn-primary">Work With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg" id="process">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Simple, Transparent Process</h2>
+    <p class="section-sub">From first contact to fully working system — here's how we get things done.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Consultation</h3>
+        <p>Tell us your requirements. We assess your setup and recommend the best solution for your needs and budget.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>Planning</h3>
+        <p>We create a detailed action plan covering timelines, access requirements, and deliverables — no surprises.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>Implementation</h3>
+        <p>Our team executes the plan with minimal downtime. We handle everything from DNS to user onboarding.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>Testing & Handover</h3>
+        <p>We test thoroughly, document everything, and hand over a fully working system with ongoing support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">Client Reviews</div>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Trusted by businesses from Bangladesh, USA, UK, Canada and beyond.</p>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"RTech Support set up our Microsoft 365 from scratch — all DNS records, user accounts, and security policies. Everything worked perfectly. Highly recommended!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JM</div>
+          <div><div class="testi-name">James Miller</div><div class="testi-loc">🇺🇸 USA — IT Manager</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Our email was landing in spam constantly. RTech fixed our SPF, DKIM, and DMARC in one session. Delivery rates jumped to 99% within days. Brilliant work!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SR</div>
+          <div><div class="testi-name">Sarah Richards</div><div class="testi-loc">🇬🇧 UK — Marketing Director</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Migrated 200+ mailboxes from cPanel to Google Workspace without losing a single email. The team was responsive and professional throughout. 10/10."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AC</div>
+          <div><div class="testi-name">Ahmed Chowdhury</div><div class="testi-loc">🇧🇩 Bangladesh — CEO</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to Fix Your IT & Email Problems?</h2>
+    <p>Get a free consultation today — no commitment, no jargon, just clear answers.</p>
+    <a href="#contact" class="btn-white">Schedule a Free Call →</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#fff;">
+  <div class="container" style="max-width:860px;text-align:center;">
+    <div class="section-label" style="justify-content:center;display:flex;">Contact Us</div>
+    <h2 class="section-title" style="color:var(--blue);margin-bottom:1rem;">Get In Touch With RTech Support</h2>
+    <p style="color:var(--gray-600);font-size:1rem;max-width:620px;margin:0 auto 3rem;">
+      Contact RTech Support for expert assistance with email setup, migration, security, and DNS configuration. Our team is ready to provide tailored solutions to optimize your email infrastructure and ensure smooth, secure communication. Reach out today for professional support!
+    </p>
+
+    <!-- Contact Channel Cards -->
+    <div class="contact-channels">
+
+      <a href="https://wa.me/8801811242967" target="_blank" class="channel-card">
+        <div class="channel-icon-wrap whatsapp-bg">
+          <svg viewBox="0 0 48 48" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#25D366"/>
+            <path d="M24 8C15.163 8 8 15.163 8 24c0 2.837.743 5.502 2.042 7.818L8 40l8.418-2.004A15.94 15.94 0 0024 40c8.837 0 16-7.163 16-16S32.837 8 24 8zm0 29.5a13.44 13.44 0 01-6.847-1.874l-.491-.291-5.001 1.191 1.218-4.858-.32-.5A13.45 13.45 0 0110.5 24C10.5 16.544 16.544 10.5 24 10.5S37.5 16.544 37.5 24 31.456 37.5 24 37.5zm7.41-10.02c-.406-.203-2.4-1.185-2.772-1.32-.372-.136-.643-.203-.914.203-.271.406-1.05 1.32-1.287 1.591-.237.271-.474.305-.88.102-.406-.203-1.714-.632-3.264-2.015-1.207-1.077-2.022-2.407-2.259-2.813-.237-.406-.025-.625.178-.827.182-.181.406-.474.61-.711.203-.237.27-.406.406-.677.136-.271.068-.508-.034-.711-.102-.203-.914-2.202-1.252-3.013-.33-.79-.665-.683-.914-.696l-.779-.013c-.271 0-.711.102-1.083.508-.372.406-1.422 1.389-1.422 3.388s1.456 3.929 1.659 4.2c.203.271 2.866 4.376 6.945 6.136.97.419 1.728.669 2.318.856.974.31 1.861.266 2.562.161.782-.117 2.4-.981 2.738-1.929.338-.948.338-1.761.237-1.929-.102-.169-.372-.271-.779-.474z" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="channel-label">WhatsApp</div>
+        <div class="channel-val">+8801811242967</div>
+      </a>
+
+      <a href="mailto:info@RTechsupport.net" class="channel-card">
+        <div class="channel-icon-wrap email-bg">
+          <svg viewBox="0 0 48 48" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#4F6FE8"/>
+            <path d="M10 16a2 2 0 012-2h24a2 2 0 012 2v16a2 2 0 01-2 2H12a2 2 0 01-2-2V16z" fill="none" stroke="#fff" stroke-width="2"/>
+            <path d="M10 17l14 9 14-9" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="channel-label">Email</div>
+        <div class="channel-val">info@rtechsupport.net</div>
+      </a>
+
+      <a href="https://www.RTechsupport.net" target="_blank" class="channel-card">
+        <div class="channel-icon-wrap website-bg">
+          <svg viewBox="0 0 48 48" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#0891B2"/>
+            <circle cx="24" cy="24" r="13" fill="none" stroke="#fff" stroke-width="2"/>
+            <ellipse cx="24" cy="24" rx="5.5" ry="13" fill="none" stroke="#fff" stroke-width="2"/>
+            <line x1="11" y1="24" x2="37" y2="24" stroke="#fff" stroke-width="2"/>
+            <line x1="12" y1="18" x2="36" y2="18" stroke="#fff" stroke-width="2"/>
+            <line x1="12" y1="30" x2="36" y2="30" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="channel-label">Website</div>
+        <div class="channel-val">www.rtechsupport.net</div>
+      </a>
+
+      <a href="https://maps.google.com/?q=Dhaka,Bangladesh" target="_blank" class="channel-card">
+        <div class="channel-icon-wrap location-bg">
+          <svg viewBox="0 0 48 48" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#EF4444"/>
+            <path d="M24 10c-5.523 0-10 4.477-10 10 0 7.5 10 18 10 18s10-10.5 10-18c0-5.523-4.477-10-10-10z" fill="none" stroke="#fff" stroke-width="2"/>
+            <circle cx="24" cy="20" r="3.5" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="channel-label">Location</div>
+        <div class="channel-val">Dhaka, Bangladesh</div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider -->
+    <div style="border-top:1px solid var(--gray-200);margin:3rem 0;"></div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-centered">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;color:var(--navy);margin-bottom:0.5rem;font-weight:800;">Send Us a Message</h3>
+      <p style="color:var(--gray-400);font-size:0.88rem;margin-bottom:2rem;">Fill in the form and we'll get back to you within a few hours.</p>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John" /></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@company.com" /></div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Microsoft 365 Setup</option>
+          <option>Google Workspace Setup</option>
+          <option>DNS &amp; Domain Management</option>
+          <option>Email Security</option>
+          <option>Email Migration</option>
+          <option>Email Deliverability</option>
+          <option>General IT Support</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Describe your issue or requirement..."></textarea></div>
+      <button class="btn-submit" onclick="alert('Thank you! We will be in touch within a few hours.')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#">
+         
+          RTech<span>Support</span>
+        </a>
+        <p>Your trusted IT and email support partner. We help businesses worldwide build secure, reliable, and scalable digital infrastructure.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Microsoft 365</a></li>
+          <li><a href="#services">Google Workspace</a></li>
+          <li><a href="#services">DNS Management</a></li>
+          <li><a href="#services">Email Security</a></li>
+          <li><a href="#services">Email Migration</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://www.rtechsupport.net">rtechsupport.net</a></li>
+          <li><a href="mailto:info@rtechsupport.net">info@rtechsupport.net</a></li>
+          <li><a href="#">Dhaka, Bangladesh</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Find Me -->
+    <div class="find-me">
+      <h4>Find ME</h4>
+      <div class="find-me-row">
+        <a class="findme-badge" href="https://www.fiverr.com" target="_blank" rel="noopener" title="Fiverr">
+          <svg viewBox="0 0 90 24" xmlns="http://www.w3.org/2000/svg" height="22">
+            <text x="0" y="18" font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="#1DBF73">fiverr<tspan font-style="italic">.</tspan></text>
+          </svg>
+        </a>
+        <a class="findme-badge" href="https://www.upwork.com" target="_blank" rel="noopener" title="Upwork">
+          <svg viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg" height="22">
+            <text x="0" y="18" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#6FDA44">up<tspan fill="#222222">work</tspan></text>
+          </svg>
+        </a>
+        <div class="findme-social">
+          <a href="https://www.facebook.com/rtechsupport/" target="_blank" rel="noopener" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.79c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/rtechsupport" target="_blank" rel="noopener" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener" title="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8.2s-.21-1.5-.86-2.16c-.82-.87-1.74-.87-2.16-.92C15.85 5 12 5 12 5h-.01s-3.85 0-6.78.12c-.42.05-1.34.05-2.16.92C2.4 6.7 2.2 8.2 2.2 8.2S2 9.96 2 11.73v1.54c0 1.77.2 3.53.2 3.53s.2 1.5.85 2.16c.82.87 1.9.84 2.38.93 1.72.17 7.57.22 7.57.22s3.85-.01 6.78-.13c.42-.05 1.34-.05 2.16-.92.65-.66.86-2.16.86-2.16s.2-1.76.2-3.53v-1.54c0-1.77-.2-3.53-.2-3.53zM9.96 14.98v-5.7l5.4 2.86-5.4 2.84z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 RTech Support. All rights reserved.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);">Built with care in Dhaka, Bangladesh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Portfolio filter ──────────────────────────────────────────
+  function filterPortfolio(cat, btn) {
+    document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.port-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // ── Mobile hamburger menu ───────────────────────────────────────
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.has-dropdown').forEach(function(el) {
+      el.classList.remove('open');
+    });
+  }
+
+  function toggleMobileMenu() {
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  hamburger.addEventListener('click', toggleMobileMenu);
+  hamburger.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMobileMenu();
+    }
+  });
+
+  // Close mobile menu when a plain nav link (not a dropdown toggle) is clicked
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    if (!link.closest('.has-dropdown') || link.closest('.dropdown')) {
+      link.addEventListener('click', closeMobileMenu);
+    }
+  });
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    if (navLinks.classList.contains('open') &&
+        !e.target.closest('#navLinks') &&
+        !e.target.closest('#hamburger')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close mobile menu on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+
+  // Reset menu state if the viewport grows back to desktop size
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 900) closeMobileMenu();
+  });
+
+  // ── Dropdown: click to open/close ─────────────────────────────
+  document.querySelectorAll('.has-dropdown > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var parent = this.closest('.has-dropdown');
+      var isOpen = parent.classList.contains('open');
+      // Close all dropdowns first
+      document.querySelectorAll('.has-dropdown').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      // Toggle clicked one
+      if (!isOpen) {
+        parent.classList.add('open');
+      }
+    });
+  });
+
+  // Close dropdown when clicking anywhere outside nav
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.has-dropdown')) {
+      document.querySelectorAll('.has-dropdown').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Close dropdown when a submenu item is clicked
+  document.querySelectorAll('.dropdown a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelectorAll('.has-dropdown').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      closeMobileMenu();
+    });
+  });
+</script>
+</body>
+</html>
